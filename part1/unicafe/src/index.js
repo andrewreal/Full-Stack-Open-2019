@@ -17,7 +17,7 @@ const Button = (props) => {
 
 const Result = (props) => {
   return (
-    <p>{props.text} {props.value}</p>
+    <p>{props.text} {props.value} {props.suffix}</p>
   )
 }
 
@@ -37,6 +37,10 @@ const App = () => {
       <Result text="Good" value={good}/>
       <Result text="Neutral" value={neutral}/>
       <Result text="Bad" value={bad}/>
+      <p></p>
+      <Result text="All" value={bad+neutral+good}/>
+      <Result text="Average" value={(good-bad)/(good+neutral+bad)}/>
+      <Result text="Positive" value={(good)/(good+neutral+bad)*100} suffix="%"/> 
     </div>
   )
 }
