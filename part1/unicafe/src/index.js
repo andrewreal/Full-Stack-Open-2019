@@ -22,6 +22,14 @@ const Result = (props) => {
 }
 
 const Statistics = ({good, neutral, bad}) => {
+  if (good+neutral+bad == 0){
+    return (
+      <div>
+        <Header text="Statistics"/>
+        <p>No feedback given</p>
+      </div>
+    )
+  }
   return (
     <div>
       <Header text="Statistics"/>
