@@ -15,14 +15,14 @@ const Button = (props) => {
   )
 }
 
-const Result = (props) => {
+const Statistic = (props) => {
   return (
     <p>{props.text} {props.value} {props.suffix}</p>
   )
 }
 
 const Statistics = ({good, neutral, bad}) => {
-  if (good+neutral+bad == 0){
+  if (good+neutral+bad === 0){
     return (
       <div>
         <Header text="Statistics"/>
@@ -33,13 +33,13 @@ const Statistics = ({good, neutral, bad}) => {
   return (
     <div>
       <Header text="Statistics"/>
-      <Result text="Good" value={good}/>
-      <Result text="Neutral" value={neutral}/>
-      <Result text="Bad" value={bad}/>
+      <Statistic text="Good" value={good}/>
+      <Statistic text="Neutral" value={neutral}/>
+      <Statistic text="Bad" value={bad}/>
       <p></p>
-      <Result text="All" value={bad+neutral+good}/>
-      <Result text="Average" value={(good-bad)/(good+neutral+bad)}/>
-      <Result text="Positive" value={(good)/(good+neutral+bad)*100} suffix="%"/> 
+      <Statistic text="All" value={bad+neutral+good}/>
+      <Statistic text="Average" value={(good-bad)/(good+neutral+bad)}/>
+      <Statistic text="Positive" value={(good)/(good+neutral+bad)*100} suffix="%"/> 
     </div>
   )
 }
