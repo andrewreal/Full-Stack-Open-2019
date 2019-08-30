@@ -4,19 +4,8 @@ import ReactDOM from 'react-dom'
 const Button = (props) => {
   return (
     <div>
-      <button onClick={props.handleClick}>Next Anecdote</button>
-    </div>
-  )
-}
-
-const App = (props) => {
-  const [selected, setSelected] = useState(0)
-
-  return (
-    <div>
-      {props.anecdotes[selected]}
-      <Button handleClick={()=>setSelected(Math.floor(Math.random() * 5 ) ) }></Button>
-    </div>
+      <button onClick={props.handleClick}>{props.text}</button>
+    </div> 
   )
 }
 
@@ -29,7 +18,31 @@ const anecdotes = [
   'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
 ]
 
+const initialPoints = new Array(anecdotes.length + 1).join('0').split('').map(parseFloat)
+
+const addPoint = (selected, points, setPoints) => {
+  let pointsTemp = {...points};
+  pointsTemp[selected] = points[selected]+1;
+  setPoints(pointsTemp);
+}
+
+const App = (props) => {
+  const [selected, setSelected] = useState(0);
+  const [points, setPoints] = useState({...initialPoints});
+
+  return (
+    <div>
+      <p>{props.anecdotes[selected]}</p>
+      <p>Has {points[selected]} votes</p>
+      <Button text="Vote" handleClick={()=>addPoint(selected, points, setPoints) }></Button>
+      <Button text="Next anecdote" handleClick={()=>setSelected(Math.floor(Math.random() * 5 ) ) }></Button>
+    </div>
+  )
+}
+
 ReactDOM.render(
-  <App anecdotes={anecdotes} />,
+  <App 
+    anecdotes={anecdotes} 
+    />,
   document.getElementById('root')
 )
