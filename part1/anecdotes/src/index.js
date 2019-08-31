@@ -9,6 +9,29 @@ const Button = (props) => {
   )
 }
 
+const Heading = (props) => {
+  return (
+    <h1>{props.text}</h1>
+  )
+}
+
+const MostVotes = ({anecdotes, points}) => {
+  const pointsArr = Object.entries(points);
+  let largest = 0;
+  let position = null;
+  for (const [key, value] of pointsArr){
+    if ( value > largest ){
+      largest = value;
+      position = key;
+    }
+  }  
+  return (
+    <p>
+      {anecdotes[position]} has {points[position]} votes.
+    </p>
+  )
+}
+
 const anecdotes = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -32,10 +55,13 @@ const App = (props) => {
 
   return (
     <div>
+      <Heading text="Anecdote of the day"/>
       <p>{props.anecdotes[selected]}</p>
       <p>Has {points[selected]} votes</p>
       <Button text="Vote" handleClick={()=>addPoint(selected, points, setPoints) }></Button>
       <Button text="Next anecdote" handleClick={()=>setSelected(Math.floor(Math.random() * 5 ) ) }></Button>
+      <Heading text="Anecdote with the most votes"/>
+      <MostVotes anecdotes={props.anecdotes} points={points}/>
     </div>
   )
 }
