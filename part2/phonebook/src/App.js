@@ -5,6 +5,7 @@ const Numbers = (props) => {
     <Name
       key={person.id}
       name={person.name}
+      phone={person.phone}
     />
   )
   return (
@@ -17,22 +18,22 @@ const Numbers = (props) => {
 
 const Name = (props) => {
   return (
-    <p>Name: {props.name}</p>
+    <p>Name: {props.name} - Phone: {props.phone}</p>
   )
 }
 const App = () => {
   const [ persons, setPersons] = useState([
     { 
       name: 'Arto Hellas',
+      phone: '012345',
       id: 0
     }
   ]) 
   const [ newName, setNewName ] = useState('')
+  const [ newPhone, setNewPhone ] = useState('')
 
   const addName = (event) => {
     event.preventDefault();
-    console.log(persons.indexOf(newName));
-    
     const foundPerson = persons.filter(person => (person.name === newName));    
     if (foundPerson.length > 0){
       alert(`${newName} is already added to the phonebook.`);
@@ -40,6 +41,7 @@ const App = () => {
     }
     const newPerson = {
       name: newName,
+      phone: newPhone,
       id: persons.length + 1,
     }
     setPersons(persons.concat(
@@ -50,6 +52,10 @@ const App = () => {
     setNewName(event.target.value);
   }
 
+  const handlePhoneChange = (event) => {
+    setNewPhone(event.target.value);
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -58,6 +64,12 @@ const App = () => {
           name: <input 
             value={newName}
             onChange={handleNameChange}
+            />
+        </div>
+        <div>
+          phone: <input 
+            value={newPhone}
+            onChange={handlePhoneChange}
             />
         </div>
         <div>
