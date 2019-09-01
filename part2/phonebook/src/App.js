@@ -1,26 +1,6 @@
 import React, { useState } from 'react'
+import Numbers from './components/Numbers';
 
-const Numbers = (props) => {
-  const names = () => props.people.map(person => 
-    <Name
-      key={person.id}
-      name={person.name}
-      phone={person.phone}
-    />
-  )
-  return (
-    <div>
-      <h2>Numbers</h2>
-      {names()}
-    </div>
-  )
-}
-
-const Name = (props) => {
-  return (
-    <p>Name: {props.name} - Phone: {props.phone}</p>
-  )
-}
 const App = () => {
   const [ persons, setPersons] = useState([
     { 
