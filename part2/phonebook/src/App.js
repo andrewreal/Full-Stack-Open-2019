@@ -31,6 +31,13 @@ const App = () => {
 
   const addName = (event) => {
     event.preventDefault();
+    console.log(persons.indexOf(newName));
+    
+    const foundPerson = persons.filter(person => (person.name === newName));    
+    if (foundPerson.length > 0){
+      alert(`${newName} is already added to the phonebook.`);
+      return;
+    }
     const newPerson = {
       name: newName,
       id: persons.length + 1,
