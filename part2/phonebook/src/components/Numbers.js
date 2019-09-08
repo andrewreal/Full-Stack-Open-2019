@@ -2,13 +2,16 @@ import React from 'react';
 import Name from './Name';
 
 const Numbers = (props) => {
-  const names = () => props.people.map(person => 
+  console.log(props.peopleToShow);
+  
+  const names = () => props.peopleToShow.map( person => 
     <Name
       key={person.id}
       name={person.name}
       phone={person.phone}
     />
   )
+
   return (
     <div>
       <h2>Numbers</h2>
