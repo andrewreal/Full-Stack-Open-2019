@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Numbers from './components/Numbers';
 import Filter from './components/Filter';
-import Name from './components/Name';
 import Form from './components/Form';
 
 const App = () => {
@@ -72,23 +71,6 @@ const App = () => {
         newPhone={newPhone}
         handlePhoneChange={handlePhoneChange}
       />
-      {/* <form onSubmit={addName}>
-        <div>
-          Name: <input 
-            value={newName}
-            onChange={handleNameChange}
-            />
-        </div>
-        <div>
-          Phone: <input 
-            value={newPhone}
-            onChange={handlePhoneChange}
-            />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form> */}
       <Numbers 
         peopleToShow={peopleToShow}
       />
