@@ -23,6 +23,10 @@ const App = () => {
     setFilter(event.target.value);
   }
 
+  const setFilteredCountry = (country) => {
+    setFilter(country)
+  }
+
   return (
     <div className="App">
       <CountrySearch
@@ -31,6 +35,7 @@ const App = () => {
       />
       <CountryFoundList
         countries={countriesToShow}
+        setFilteredCountry={setFilteredCountry}
       />
     </div>
   );

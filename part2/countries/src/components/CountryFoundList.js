@@ -8,6 +8,9 @@ const CountryFoundList = (props) => {
       ? props.countries.map(country => 
           <li key={country.alpha2Code}>
             {country.name}
+            <button 
+              onClick= {() => props.setFilteredCountry(country.name)}
+            >Show</button>
           </li>
         )
       : props.countries.map(country =>
