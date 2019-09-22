@@ -1,4 +1,5 @@
 import React from 'react';
+import Weather from './Weather';
 
 const CountryFoundList = (props) => {
   
@@ -28,7 +29,11 @@ const CountryFoundList = (props) => {
               </li>
             )}
           </ul>
-          <img src={country.flag} />
+          <img src={country.flag} alt="Flag of {country.name}"/>
+          <Weather
+            country={country}
+            weather={props.weather}
+          />
           
         </div>
       )
