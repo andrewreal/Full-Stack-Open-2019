@@ -30,11 +30,14 @@ const App = () => {
     }
     const newPerson = {
       name: newName,
-      phone: newPhone,
-      id: persons.length + 1,
+      number: newPhone,
     }
-    setPersons(persons.concat(
-      newPerson));
+    const url = `http://localhost:3001/persons/`
+    axios.post(url, newPerson)
+      .then (response => {
+        setPersons(persons.concat(response.data));
+      })
+
   }
 
   const handleNameChange = (event) => {
