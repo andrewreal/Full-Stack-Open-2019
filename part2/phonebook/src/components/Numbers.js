@@ -8,7 +8,7 @@ const Numbers = (props) => {
     <Name
       key={person.id}
       name={person.name}
-      phone={person.phone}
+      phone={person.number}
     />
   )
 
