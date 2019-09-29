@@ -31,6 +31,12 @@ const App = (props) => {
           : returnedNote
         ))
       })
+      .catch(error => {
+        alert(
+          `The note '${note.content}' was already deleted from the server.` 
+        )
+        setNotes(notes.filter(n => n.id !== id))
+      })
   }
 
   const rows = () => notesToShow.map(note =>
