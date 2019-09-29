@@ -21,20 +21,38 @@
     {
       "content": "Test",
       "date": "2019-09-23T19:54:34.320Z",
-      "important": true,
+      "important": false,
       "id": 4
     },
     {
       "content": "Test again",
       "date": "2019-09-23T20:07:18.792Z",
-      "important": true,
+      "important": false,
       "id": 5
     },
     {
       "content": "New test",
       "date": "2019-09-29T09:51:57.276Z",
-      "important": true,
+      "important": false,
       "id": 6
+    },
+    {
+      "content": "Test response",
+      "date": "2019-09-29T10:00:55.187Z",
+      "important": false,
+      "id": 7
+    },
+    {
+      "content": "Response 2",
+      "date": "2019-09-29T11:00:25.370Z",
+      "important": false,
+      "id": 8
+    },
+    {
+      "content": "Response 3",
+      "date": "2019-09-29T11:03:00.612Z",
+      "important": true,
+      "id": 9
     }
   ]
 }
