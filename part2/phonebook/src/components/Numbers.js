@@ -2,14 +2,24 @@ import React from 'react';
 import Name from './Name';
 
 const Numbers = (props) => {
-  console.log(props.peopleToShow);
+    
+  const deleteNumber = (id) => {props.deleteNumber(id)} 
   
   const names = () => props.peopleToShow.map( person => 
-    <Name
-      key={person.id}
-      name={person.name}
-      phone={person.number}
-    />
+    <div
+    key={person.id}
+    >
+      <Name
+        key={person.id}
+        name={person.name}
+        phone={person.number}
+      />
+      <button
+        onClick={() => deleteNumber(person.id)}
+        // onClick={deleteNumber}
+      >Delete
+      </button>
+    </div>
   )
 
   return (
