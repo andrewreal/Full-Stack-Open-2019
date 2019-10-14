@@ -25,19 +25,33 @@ const App = () => {
     event.preventDefault();
     const foundPerson = persons.filter(person => (person.name === newName));    
     if (foundPerson.length > 0){
-      alert(`${newName} is already added to the phonebook.`);
+      if (window.confirm(`${newName} is already in the phonebook. replace old number with the new one?`) ) {
+        updatePerson(foundPerson[0].id, newName, newPhone)
+      }
       return;
+    } else {
+      const newPerson = {
+        name: newName,
+        number: newPhone,
+      }
+      phoneService
+        .create(newPerson)
+        .then (response => {
+          setPersons(persons.concat(response.data));
+        })
     }
-    const newPerson = {
+  }
+
+  const updatePerson = (id, newName, newPhone) => {
+    const person = {
       name: newName,
       number: newPhone,
     }
     phoneService
-      .create(newPerson)
-      .then (response => {
-        setPersons(persons.concat(response.data));
+      .update(id, person)
+      .then(response => {
+        setPersons(persons.filter(person => person.id !== id).concat(response.data))
       })
-
   }
 
   const handleNameChange = (event) => {
@@ -60,7 +74,6 @@ const App = () => {
             response.status === 200
               ? setPersons(persons.filter(person => person.id !== id))
               : console.log('Error', response);
-              
         })
     }
   }
